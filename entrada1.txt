@@ -1,0 +1,3 @@
+alexandre_logica-cc
+-logica-cc_seg_H1 logica-cc_qua_H1
+-logica-cc_ter_H1 logica-cc_ter_H1
