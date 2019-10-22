@@ -1,0 +1,9 @@
+image: guikar741/python-glucose:1.0
+
+stages:
+  - executar
+
+executar:
+  stage: executar
+  script:
+    - python trab.py
