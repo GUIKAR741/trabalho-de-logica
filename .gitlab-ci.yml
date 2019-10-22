@@ -1,4 +1,4 @@
-image: guikar741/python-glucose:1.0
+image: guikar741/python-glucose:1.5
 
 stages:
   - executar
