@@ -6,4 +6,9 @@ stages:
 executar:
   stage: executar
   script:
-    - python trab.py
+    - python trab.py > out.txt
+  artifacts:
+    name: SAIDA-SATSOLVER-$CI_PIPELINE_ID
+    paths:
+      - out.txt
+
