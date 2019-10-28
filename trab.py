@@ -24,18 +24,78 @@ professores = [
 dias = [
     "segunda", "terca", "quarta", "quinta", "sexta"
 ]
-disciplinas = [
-    "logica-cc", "logica-es", "arq-softw-es", "intro-es-es",
-    "qualidade-es", "ppct-cces", "compiladores-cc", 'teoria-cc',
-    "lfa-cc", "bd-cc", "bd-es", "comp-grafica-cc", "lab-prog-cc", "lab-prog-es",
-    "eda-cc", "web-cc", "sd-cc", "redes-cc", "lp-es", "processos-soft-es", "manutencao-es",
-    "iprs-es", "gps-es", "aps-cces", "emp-cces", "etica-es", "etica-cc",
-    "paa-cces", "fup-cc", "fup-es", "poo-cc", "poo-es", "vv-es", "pds-es",
-    "grafos-es", "grafos-cc", "mat-comp-cc", "ed-cc", "ed-es",
-    "req-soft-es", "eng-soft-es", "ihc-es", "ihc-cc", "so-cc", "ia-cc",
-    "arq-comp-cc", "arq-comp-es", "mat-bas-es", "calc1-cc", "mat-bas-cc",
-    "prob-est-cc", "discreta-cc", "discreta-es", "prob-est-es", "pre-calc-cc"
-]
+semestres = {
+    '1': [
+        "anna_beatriz-intro-es-es",
+        "gleison-mat-bas-es",
+        "gastao-mat-bas-cc",
+        "anderson_magno-pre-calc-cc",
+        "josimeire-etica-es",
+        "josimeire-etica-cc",
+        "marcio-fup-cc",
+        "marcio-fup-es"
+    ],
+    '2': [
+        "osvaldo-iprs-es",
+        "alex-arq-comp-cc",
+        "alex-arq-comp-es",
+        "eurinardo-lab-prog-cc",
+        "eurinardo-lab-prog-es",
+        "anderson_feitoza-discreta-cc",
+        "anderson_feitoza-discreta-es",
+        "tatiane-ed-cc",
+        "tatiane-ed-es",
+        "gleison-calc1-cc",
+    ],
+    '3': [
+        "rosineide-prob-est-cc",
+        "nilde-prob-est-es",
+        "pablo-grafos-es",
+        "pablo-grafos-cc",
+        "joao_victor-poo-cc",
+        "nauber-lp-es",
+        "joao_victor-poo-es",
+        "gastao-algebra-linerar-cc",
+        "patricia-req-soft-es",
+    ],
+    '4': [
+        "alexandre_logica-cc",
+        "alexandre_logica-es",
+        "daniel_siqueira-bd-cc",
+        "daniel_siqueira-bd-es",
+        "nauber-processos-soft-es",
+        "marcio-paa-cces",
+        "eurinardo-eda-cc",
+    ],
+    '5': [
+        "osvaldo-aps-cces",
+        "patricia-ihc-es",
+        "patricia-ihc-cc",
+        "joao_victor-pds-es",
+        "filipe-redes-cc",
+        "alex-so-cc",
+        "patricia-eng-soft-es",
+        "osvaldo-gps-es",
+        "daniel_siqueira-comp-grafica-cc",
+    ],
+    '6': [
+        "alex-ia-cc",
+        "filipe-web-cc",
+        "filipe-sd-cc",
+        "anna_beatriz-arq-softw-es",
+        "joao_victor-vv-es",
+        "anna_beatriz-qualidade-es",
+        "bonfim-lfa-cc",
+        "nauber-manutencao-es",
+        "tatiane-mat-comp-cc",
+    ],
+    '7': [
+        "anna_beatriz-ppct-cces",
+        "josimeire-emp-cces",
+        "bonfim-compiladores-cc",
+        'bonfim-teoria-cc',
+    ],
+}
 horarios = [
     'h1', 'h2', 'h3', 'h4'
 ]
@@ -44,9 +104,10 @@ for i in professores:
     print(" ".join([f"{i}_{j}" for j in [dias[0], dias[-1]]]))
     print(" ".join([f"-{i}_{j}" for j in [dias[0], dias[-1]]]))
 
-for i in disciplinas:
-    for j in dias:
-        for k in horarios:
-            print(f"{i}_{j}_{k}")
+for i in semestres.keys():
+    for ij in semestres[i]:
+        for j in dias:
+            for k in horarios:
+                print(f"{ij}_{j}_{k}")
 
 system("./converttoCNF")
