@@ -100,14 +100,51 @@ horarios = [
     'h1', 'h2', 'h3', 'h4'
 ]
 
+# Professor dar aula segunda ou sexta
 for i in professores:
     print(" ".join([f"{i}_{j}" for j in [dias[0], dias[-1]]]))
     print(" ".join([f"-{i}_{j}" for j in [dias[0], dias[-1]]]))
 
+for i in professores:
+    for sem in semestres.keys():
+        for ij in semestres[sem]:
+            if i in ij:
+                for d in [dias[0], dias[-1]]:
+                    print(f"-{i}_{d}", end=' ')
+                    for h in horarios:
+                        print(f"{ij}_{d}_{h}", end=' ')
+                    print()
+
 for i in semestres.keys():
     for ij in semestres[i]:
+        # No minimo uma aula por semana
         for j in dias:
             for k in horarios:
-                print(f"{ij}_{j}_{k}")
+                print(f"{ij}_{j}_{k}", end=" ")
+        print()
+        # Duas Aulas por semana
+        for d1 in dias:
+            for h1 in horarios:
+                for d2 in dias:
+                    for h2 in horarios:
+                        if d1 == d2 and h1 == h2:
+                            print(f"-{ij}_{d2}_{h2}", end=" ")
+                        else:
+                            print(f"{ij}_{d2}_{h2}", end=" ")
+                print()
+
+# Emparelhamento de aulas
+for i in semestres.keys():
+    for ij in semestres[i]:
+        for h in horarios:
+            # for d in dias:
+            print(f"-{ij}_segunda_{h} {ij}_quarta_{h}")
+            print(f"-{ij}_quarta_{h} {ij}_sexta_{h}")
+            print(f"-{ij}_sexta_{h} {ij}_quarta_{h}")
+            print(f"-{ij}_quarta_{h} {ij}_segunda_{h}")
+            print(f"-{ij}_terca_{h} {ij}_quinta_{h}")
+            print(f"-{ij}_quinta_{h} {ij}_terca_{h}")
+            # print(f"-{ij}_segunda_{h} {ij}_quarta_{h}")
+
 
 system("./converttoCNF")
