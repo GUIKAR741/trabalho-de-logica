@@ -109,29 +109,39 @@ for i in professores:
     print(" ".join([f"-{i}_{j}" for j in [dias[0], dias[-1]]]))
 
 for p in professores:
-    # for d in [dias[0], dias[-1]]:
     seg, sex = dias[0], dias[-1]
+    imp = []
+    imp2 = []
     for sem in semestres.keys():
-        imp = []
         for ij in semestres[sem]:
             if p in ij:
                 if not (f"-{p}_{seg}" in imp):
                     imp.append(f"-{p}_{seg}")
+                    imp2.append(f"-{p}_{seg}")
                 for h in horarios:
                     if not (f"{ij}_{seg}_{h}" in imp):
                         imp.append(f"{ij}_{seg}_{h}")
-        if len(imp) > 0:
-            print(' '.join(imp))
-        imp = []
+                        imp2.append(f"-{ij}_{sex}_{h}")
+    if len(imp) > 0:
+        print(' '.join(imp))
+    if len(imp2) > 0:
+        print(' '.join(imp2))
+    imp = []
+    imp2 = []
+    for sem in semestres.keys():
         for ij in semestres[sem]:
             if p in ij:
                 if not (f"-{p}_{sex}" in imp):
                     imp.append(f"-{p}_{sex}")
+                    imp2.append(f"-{p}_{sex}")
                 for h in horarios:
                     if not (f"{ij}_{sex}_{h}" in imp):
                         imp.append(f"{ij}_{sex}_{h}")
-        if len(imp) > 0:
-            print(' '.join(imp))
+                        imp2.append(f"-{ij}_{seg}_{h}")
+    if len(imp) > 0:
+        print(' '.join(imp))
+    if len(imp2) > 0:
+        print(' '.join(imp2))
 
 # Limitação de aulas por semana
 for i in semestres.keys():
