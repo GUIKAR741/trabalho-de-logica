@@ -1,5 +1,6 @@
 """."""
 from os import system
+from itertools import combinations
 
 
 def escreve_arquivo(*args, **kwargs):
@@ -26,82 +27,99 @@ dias = [
 ]
 semestres = {
     '1': [
-        "anna_beatriz-intro_es-es",
-        "gleison-mat_bas-es",
-        "gastao-mat_bas-cc",
-        "anderson_magno-pre_calc-cc",
-        "josimeire-etica-es",
-        "josimeire-etica-cc",
-        "marcio_costa-fup-cc",
-        "marcio_costa-fup-es",
-        "rafael_ivo-intro_cc-cc"
+        "anna_beatriz__intro_es__es",
+        "gleison__mat_bas__es",
+        "gastao__mat_bas__cc",
+        "josimeire__etica__es",
+        "josimeire__etica__cc",
+        "marcio_costa__fup__cc",
+        "marcio_costa__fup__es",
+        "rafael_ivo__intro_cc__cc"
     ],
     '2': [
-        "osvaldo-iprs-es",
-        "alex_lima-arq_comp-cc",
-        "alex_lima-arq_comp-es",
-        "eurinardo-lab_prog-cc",
-        "eurinardo-lab_prog-es",
-        "anderson_feitoza-discreta-cc",
-        "anderson_feitoza-discreta-es",
-        "tatiane-ed-cc",
-        "tatiane-ed-es",
-        "gleison-calc1-cc",
+        "osvaldo__iprs__es",
+        "alex_lima__arq_comp__cc",
+        "alex_lima__arq_comp__es",
+        "eurinardo__lab_prog__cc",
+        "eurinardo__lab_prog__es",
+        "anderson_feitoza__discreta__cc",
+        "anderson_feitoza__discreta__es",
+        "tatiane__ed__cc",
+        "tatiane__ed__es",
+        "gleison__calc1__cc",
     ],
     '3': [
-        "rosineide-prob_est-cc",
-        "nilde-prob_est-es",
-        "pablo-grafos-es",
-        "pablo-grafos-cc",
-        "joao_victor-poo-cc",
-        "nauber-lp-es",
-        "rafael_ivo-lp-cc",
-        "joao_victor-poo-es",
-        "gastao-algebra_linerar-cc",
-        "patricia-req_soft-es",
+        "rosineide__prob_est__cc",
+        "nilde__prob_est__es",
+        "pablo__grafos__es",
+        "pablo__grafos__cc",
+        "joao_victor__poo__cc",
+        "nauber__lp__es",
+        "rafael_ivo__lp__cc",
+        "joao_victor__poo__es",
+        "gastao__algebra_linerar__cc",
+        "patricia__req_soft__es",
     ],
     '4': [
-        "alexandre-logica-cc",
-        "alexandre-logica-es",
-        "daniel_siqueira-bd-cc",
-        "daniel_siqueira-bd-es",
-        "nauber-processos_soft-es",
-        "marcio_costa-paa-cces",
-        "eurinardo-eda-cc",
+        "alexandre__logica__cc",
+        "alexandre__logica__es",
+        "daniel_siqueira__bd__cc",
+        "daniel_siqueira__bd__es",
+        "nauber__processos_soft__es",
+        "marcio_costa__paa__cces",
+        "eurinardo__eda__cc",
+        "osvaldo__aps__cces",
     ],
     '5': [
-        "osvaldo-aps-cces",
-        "patricia-ihc-es",
-        "patricia-ihc-cc",
-        "joao_victor-pds-es",
-        "filipe_maciel-redes-cces",
-        "alex_lima-so-cc",
-        "rafel_ivo-so-es",
-        "patricia-eng-soft-cc",
-        "osvaldo-gps-es",
-        "daniel_siqueira-comp-grafica-cc",
+        "osvaldo__aps__cces",
+        "patricia__ihc__es",
+        "patricia__ihc__cc",
+        "joao_victor__pds__es",
+        "filipe_maciel__redes__cces",
+        "alex_lima__so__cc",
+        "rafel_ivo__so__es",
+        "patricia__eng__soft__cc",
+        "osvaldo__gps__es",
+        "daniel_siqueira__comp__grafica__cc",
     ],
     '6': [
-        "alex_lima-ia-cc",
-        "filipe_maciel-web-cc",
-        "filipe_maciel-sd-cc",
-        "anna_beatriz-arq-softw-es",
-        "joao_victor-vv-es",
-        "anna_beatriz-qualidade-es",
-        "bonfim-lfa-cc",
-        "nauber-manutencao-es",
-        "tatiane-mat-comp-cc",
+        "alex_lima__ia__cc",
+        "filipe_maciel__web__cc",
+        "filipe_maciel__sd__cc",
+        "anna_beatriz__arq__softw__es",
+        "joao_victor__vv__es",
+        "anna_beatriz__qualidade__es",
+        "bonfim__lfa__cc",
+        "nauber__manutencao__es",
+        "tatiane__mat__comp__cc",
     ],
     '7': [
-        "anna_beatriz-ppct-cces",
-        "josimeire-emp-cces",
-        "bonfim-compiladores-cc",
-        'bonfim-teoria-cc',
+        "josimeire__emp__cces",
+        "bonfim__compiladores__cc",
+        'bonfim__teoria__cc',
     ],
+}
+dis1cred = {
+    '1': [
+        "anderson_magno__pre_calc__cc",
+    ],
+    '2': [],
+    '3': [],
+    '4': [],
+    '5': [],
+    '6': [],
+    '7': [
+        "anna_beatriz__ppct__cces",
+    ]
 }
 horarios = [
     'h1', 'h2', 'h3', 'h4'
 ]
+# semestres = {
+#     '1': [
+#         "anna_beatriz__intro_es__es",
+#     ]
+# }
 
 # Professor dar aula segunda ou sexta
 for i in professores:
@@ -113,7 +131,7 @@ for p in professores:
     imp = []
     imp2 = []
     for sem in semestres.keys():
-        for ij in semestres[sem]:
+        for ij in semestres[sem] + dis1cred[sem]:
             if p in ij:
                 if not (f"-{p}_{seg}" in imp):
                     imp.append(f"-{p}_{seg}")
@@ -124,12 +142,12 @@ for p in professores:
                         imp2.append(f"-{ij}_{sex}_{h}")
     if len(imp) > 0:
         print(' '.join(imp))
-    if len(imp2) > 0:
-        print(' '.join(imp2))
+    # if len(imp2) > 0:
+    #     print(' '.join(imp2))
     imp = []
     imp2 = []
     for sem in semestres.keys():
-        for ij in semestres[sem]:
+        for ij in semestres[sem] + dis1cred[sem]:
             if p in ij:
                 if not (f"-{p}_{sex}" in imp):
                     imp.append(f"-{p}_{sex}")
@@ -140,17 +158,20 @@ for p in professores:
                         imp2.append(f"-{ij}_{seg}_{h}")
     if len(imp) > 0:
         print(' '.join(imp))
-    if len(imp2) > 0:
-        print(' '.join(imp2))
+    # if len(imp2) > 0:
+    #     print(' '.join(imp2))
 
 # Limitação de aulas por semana
 for i in semestres.keys():
-    for ij in semestres[i]:
+    for ij in semestres[i] + dis1cred[i]:
         # No minimo uma aula por semana
         for j in dias:
             for k in horarios:
                 print(f"{ij}_{j}_{k}", end=" ")
         print()
+
+for i in semestres.keys():
+    for ij in semestres[i]:
         # Duas Aulas por semana
         for d1 in dias:
             for h1 in horarios:
@@ -161,20 +182,60 @@ for i in semestres.keys():
                         else:
                             print(f"{ij}_{d2}_{h2}", end=" ")
                 print()
+        # Duas Aulas
+
+for i in dis1cred.keys():
+    for ij in dis1cred[i]:
+        todos = []
+        for d1 in dias:
+            for h1 in horarios:
+                todos.append(f"{ij}_{d1}_{h1}")
+        comb = list(combinations(todos, 2))
+        # print(comb)
+        for i in comb:
+            aula = []
+            for j in i:
+                aula.append("-" + j)
+            print(" ".join(aula))
+
+for i in semestres.keys():
+    for ij in semestres[i]:
+        todos = []
+        for d1 in dias:
+            for h1 in horarios:
+                todos.append(f"{ij}_{d1}_{h1}")
+        comb = list(combinations(todos, 3))
+        # print(comb)
+        for i in comb:
+            aula = []
+            for j in i:
+                aula.append("-" + j)
+            print(" ".join(aula))
+        # for i in comb:
+        #     ll = []
+        #     for j in todos:
+        #         if j == i[0]:
+        #             ll.append("-" + i[0])
+        #         elif j == i[1]:
+        #             ll.append("-" + i[1])
+        #         else:
+        #             ll.append(j)
+        #     print(' '.join(ll))
 
 # Emparelhamento de aulas
 for i in semestres.keys():
     for ij in semestres[i]:
         for h in horarios:
             print(f"-{ij}_segunda_{h} {ij}_quarta_{h}")
-            print(f"-{ij}_quarta_{h} {ij}_sexta_{h}")
+            print(f"-{ij}_quarta_{h} {ij}_segunda_{h} {ij}_sexta_{h}")
             print(f"-{ij}_sexta_{h} {ij}_quarta_{h}")
-            print(f"-{ij}_quarta_{h} {ij}_segunda_{h}")
+            # print(f"-{ij}_quarta_{h} {ij}_segunda_{h}")
             print(f"-{ij}_terca_{h} {ij}_quinta_{h}")
             print(f"-{ij}_quinta_{h} {ij}_terca_{h}")
 
 
 # Professor não deve da duas disciplinas no mesmo horarios
+# Combinar cada disciplina de cada professor duas a duas
 for p in professores:
     for d1 in dias:
         for h1 in horarios:
@@ -189,7 +250,8 @@ for p in professores:
                                     (f"-{disciplina}_{d1}_{h1}" in dis):
                                 dis.append(f"-{disciplina}_{d1}_{h1}")
             if len(dis) > 0:
-                print(' '.join(dis))
+                for i in list(combinations(dis, 2)):
+                    print(' '.join(i))
 
 
 # disciplinas de cces não podem colidir com nenhuma outra do mesmo semestre
@@ -205,7 +267,8 @@ for d1 in dias:
                         if not (f"-{disciplina1}_{d1}_{h1}" in dis):
                             dis.append(f"-{disciplina1}_{d1}_{h1}")
                 if len(dis) > 0:
-                    print(' '.join(dis))
+                    for i in list(combinations(dis, 2)):
+                        print(' '.join(i))
 
 # disciplinas de cc não podem colidir com nenhuma outra do mesmo semestre
 for d1 in dias:
@@ -221,7 +284,8 @@ for d1 in dias:
                            (f"-{disciplina1}_{d1}_{h1}" in dis):
                             dis.append(f"-{disciplina1}_{d1}_{h1}")
                 if len(dis) > 0:
-                    print(' '.join(dis))
+                    for i in list(combinations(dis, 2)):
+                        print(' '.join(i))
 
 
 # disciplinas de es não podem colidir com nenhuma outra do mesmo semestre
@@ -238,7 +302,8 @@ for d1 in dias:
                            and not (f"-{disciplina1}_{d1}_{h1}" in dis):
                             dis.append(f"-{disciplina1}_{d1}_{h1}")
                 if len(dis) > 0:
-                    print(' '.join(dis))
+                    for i in list(combinations(dis, 2)):
+                        print(' '.join(i))
 
 
 system("./converttoCNF")
