@@ -92,6 +92,7 @@ semestres = {
         "bonfim__lfa__cc",
         "nauber__manutencao__es",
         "tatiane__mat__comp__cc",
+        "josimeire__emp__cces",
     ],
     '7': [
         "josimeire__emp__cces",
