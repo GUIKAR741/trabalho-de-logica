@@ -69,6 +69,7 @@ semestres = {
         "marcio_costa__paa__cces",
         "eurinardo__eda__cc",
         "osvaldo__aps__cces",
+        "patricia__eng__soft__cc",
     ],
     '5': [
         "osvaldo__aps__cces",
@@ -78,7 +79,6 @@ semestres = {
         "filipe_maciel__redes__cces",
         "alex_lima__so__cc",
         "rafel_ivo__so__es",
-        "patricia__eng__soft__cc",
         "osvaldo__gps__es",
         "daniel_siqueira__comp__grafica__cc",
     ],
