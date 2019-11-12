@@ -57,7 +57,7 @@ semestres = {
         "nauber__lp__es",
         "rafael_ivo__lp__cc",
         "joao_victor__poo__es",
-        "gastao__algebra_linerar__cc",
+        "gastao__algebra_linear__cc",
         "patricia__req_soft__es",
     ],
     '4': [
@@ -258,52 +258,58 @@ for p in professores:
 for d1 in dias:
     for h1 in horarios:
         for semestre in semestres.keys():
-            for disciplina in semestres[semestre]:
+            for disciplina in semestres[semestre] + dis1cred[semestre]:
                 dis = []
-                if 'cces' == disciplina.split('-')[-1]:
-                    if not (f"-{disciplina}_{d1}_{h1}" in dis):
-                        dis.append(f"-{disciplina}_{d1}_{h1}")
-                    for disciplina1 in semestres[semestre]:
-                        if not (f"-{disciplina1}_{d1}_{h1}" in dis):
-                            dis.append(f"-{disciplina1}_{d1}_{h1}")
-                if len(dis) > 0:
-                    for i in list(combinations(dis, 2)):
-                        print(' '.join(i))
+                if 'cces' == disciplina.split('__')[-1]:
+                    # if not (f"-{disciplina}_{d1}_{h1}" in dis):
+                    #     dis.append(f"-{disciplina}_{d1}_{h1}")
+                    for disciplina1 in semestres[semestre] + dis1cred[semestre]:
+                        # if not (f"-{disciplina1}_{d1}_{h1}" in dis):
+                        #     dis.append(f"-{disciplina1}_{d1}_{h1}")
+                        if disciplina != disciplina1:
+                            print(f"-{disciplina}_{d1}_{h1} -{disciplina1}_{d1}_{h1}")
+                # if len(dis) > 0:
+                #     for i in list(combinations(dis, 2)):
+                #         print(' '.join(i))
 
 # disciplinas de cc não podem colidir com nenhuma outra do mesmo semestre
 for d1 in dias:
     for h1 in horarios:
         for semestre in semestres.keys():
-            for disciplina in semestres[semestre]:
+            for disciplina in semestres[semestre] + dis1cred[semestre]:
                 dis = []
-                if 'cc' == disciplina.split('-')[-1]:
-                    if not (f"-{disciplina}_{d1}_{h1}" in dis):
-                        dis.append(f"-{disciplina}_{d1}_{h1}")
-                    for disciplina1 in semestres[semestre]:
-                        if 'cc' == disciplina1.split('-')[-1] and not \
-                           (f"-{disciplina1}_{d1}_{h1}" in dis):
-                            dis.append(f"-{disciplina1}_{d1}_{h1}")
-                if len(dis) > 0:
-                    for i in list(combinations(dis, 2)):
-                        print(' '.join(i))
-
+                if 'cc' == disciplina.split('__')[-1]:
+                    # if not (f"-{disciplina}_{d1}_{h1}" in dis):
+                    #     dis.append(f"-{disciplina}_{d1}_{h1}")
+                    for disciplina1 in semestres[semestre] + dis1cred[semestre]:
+                        if 'cc' == disciplina1.split('__')[-1] and disciplina != disciplina1:
+                            print(f'-{disciplina}_{d1}_{h1} -{disciplina1}_{d1}_{h1}')
+                        # if 'cc' == disciplina1.split('__')[-1] and not \
+                        #    (f"-{disciplina1}_{d1}_{h1}" in dis):
+                        #     dis.append(f"-{disciplina1}_{d1}_{h1}")
+                        #     print('', end='')
+                # if len(dis) > 0:
+                #     for i in list(combinations(dis, 2)):
+                #         print(' '.join(i))
 
 # disciplinas de es não podem colidir com nenhuma outra do mesmo semestre
 for d1 in dias:
     for h1 in horarios:
         for semestre in semestres.keys():
-            for disciplina in semestres[semestre]:
+            for disciplina in semestres[semestre] + dis1cred[semestre]:
                 dis = []
-                if 'es' == disciplina.split('-')[-1]:
-                    if not (f"-{disciplina}_{d1}_{h1}" in dis):
-                        dis.append(f"-{disciplina}_{d1}_{h1}")
-                    for disciplina1 in semestres[semestre]:
-                        if 'es' == disciplina1.split('-')[-1] \
-                           and not (f"-{disciplina1}_{d1}_{h1}" in dis):
-                            dis.append(f"-{disciplina1}_{d1}_{h1}")
-                if len(dis) > 0:
-                    for i in list(combinations(dis, 2)):
-                        print(' '.join(i))
+                if 'es' == disciplina.split('__')[-1]:
+                    # if not (f"-{disciplina}_{d1}_{h1}" in dis):
+                    #     dis.append(f"-{disciplina}_{d1}_{h1}")
+                    for disciplina1 in semestres[semestre] + dis1cred[semestre]:
+                        if 'es' == disciplina1.split('__')[-1] and disciplina != disciplina1:
+                            print(f'-{disciplina}_{d1}_{h1} -{disciplina1}_{d1}_{h1}')
+                        # if 'es' == disciplina1.split('__')[-1] \
+                        #    and not (f"-{disciplina1}_{d1}_{h1}" in dis):
+                        #     dis.append(f"-{disciplina1}_{d1}_{h1}")
+                # if len(dis) > 0:
+                #     for i in list(combinations(dis, 2)):
+                #         print(' '.join(i))
 
 
 system("./converttoCNF")
