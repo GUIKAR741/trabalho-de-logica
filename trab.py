@@ -16,7 +16,7 @@ print_original = print
 print = escreve_arquivo
 
 professores = [
-    "alexandre", "anna_beatriz", "bonfim", "daniel_marcio",
+    "alexandre", "anna_beatriz", "bonfim", "daniel_siqueira",
     "eurinardo", "filipe_maciel", "nauber", "osvaldo", "josimeire",
     "marcio_costa", "joao_victor", "pablo", "tatiane", "patricia",
     "alex_lima", "gleison", "gastao", "rosineide", "anderson_feitoza",
