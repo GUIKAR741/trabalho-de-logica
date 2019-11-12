@@ -227,9 +227,10 @@ for i in semestres.keys():
 for i in semestres.keys():
     for ij in semestres[i]:
         for h in horarios:
-            print(f"-{ij}_segunda_{h} {ij}_quarta_{h}")
+            # print(f"-{ij}_segunda_{h} -{ij}_sexta_{h}")
+            # print(f"-{ij}_sexta_{h} -{ij}_segunda_{h}")
             print(f"-{ij}_quarta_{h} {ij}_segunda_{h} {ij}_sexta_{h}")
-            print(f"-{ij}_sexta_{h} {ij}_quarta_{h}")
+            # print(f"-{ij}_sexta_{h} {ij}_quarta_{h}")
             # print(f"-{ij}_quarta_{h} {ij}_segunda_{h}")
             print(f"-{ij}_terca_{h} {ij}_quinta_{h}")
             print(f"-{ij}_quinta_{h} {ij}_terca_{h}")
