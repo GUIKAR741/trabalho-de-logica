@@ -144,7 +144,8 @@ for p in professores:
     if len(imp) > 0:
         print(' '.join(imp))
     # if len(imp2) > 0:
-    #     print(' '.join(imp2))
+    #     for i in imp2[1:]:
+    #         print(imp2[0], i)
     imp = []
     imp2 = []
     for sem in semestres.keys():
@@ -160,7 +161,8 @@ for p in professores:
     if len(imp) > 0:
         print(' '.join(imp))
     # if len(imp2) > 0:
-    #     print(' '.join(imp2))
+    #     for i in imp2[1:]:
+    #         print(imp2[0], i)
 
 # Limitação de aulas por semana
 for i in semestres.keys():
@@ -171,9 +173,9 @@ for i in semestres.keys():
                 print(f"{ij}_{j}_{k}", end=" ")
         print()
 
+# Duas Aulas por semana
 for i in semestres.keys():
     for ij in semestres[i]:
-        # Duas Aulas por semana
         for d1 in dias:
             for h1 in horarios:
                 for d2 in dias:
@@ -183,8 +185,8 @@ for i in semestres.keys():
                         else:
                             print(f"{ij}_{d2}_{h2}", end=" ")
                 print()
-        # Duas Aulas
 
+# disciplina de 1 credito
 for i in dis1cred.keys():
     for ij in dis1cred[i]:
         todos = []
@@ -198,6 +200,7 @@ for i in dis1cred.keys():
             for j in i:
                 aula.append("-" + j)
             print(" ".join(aula))
+
 
 for i in semestres.keys():
     for ij in semestres[i]:
